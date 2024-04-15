@@ -39,58 +39,119 @@
 //     i--
 //   }
 // }
-// const seriesDB = {
-//   count: numberOfSeries,
-//   series: {},
-//   actors: {},
-//   genres: [],
-//   private: false,
-// }
+const seriesDB = {
+  count: 0,
+  series: {},
+  actors: {},
+  genres: [],
+  private: false,
+  start: function() {
+    seriesDB.count = +prompt("Nechta serial ko'rdingiz?", "")
+
+    while (
+      seriesDB.count == '' || seriesDB.count == null || isNaN(seriesDB.count) 
+    ) {
+      seriesDB.count = +prompt("Nechta serial ko'rdingiz?", "")
+    }
+  },
+
+  rememberMySeries: function() {
+    for (let i = 1; i <= 2; i++) {
+      const lastSerial = prompt("Oxirgi ko'rgan serialingiz?")
+      if (lastSerial === null || lastSerial === "") {
+        i--
+        continue
+      }
+      let index = 0
+      do {
+        var serialRange = +prompt("Nechchi baho berasiz?")
+        if (serialRange === 0) {
+          continue;
+        }
+        index++
+      } while (index < 1)
+      seriesDB.series[lastSerial] = serialRange
+    }
+  },
+
+  detectLevelSeries: function() {
+    if (seriesDB.count < 5) {
+      console.log("Kam serial ko'ribsiz")
+    } else if (seriesDB.count < 10) {
+      console.log("Siz classik tomoshabin ekansiz")
+    } else {
+      console.log("Siz serialchi zvezda ekansiz")
+    }
+  },
+
+  showDb: function() {
+    const private1 = prompt("mahfiy bo'lsinmi?", "")
+    seriesDB.private = private1
+    if (seriesDB.private === "yo'q") {
+      console.log(seriesDB)
+    }
+  },
+
+  writeGenres: function () {
+    for (let i = 0; i < 3; i++) {
+      const janr = prompt(`Yaxshi ko'rgan janringiz #${i+1}`)
+      if (janr == '' || janr == null || isNaN(janr)) {
+        i--;
+        continue;
+      }
+      seriesDB.genres[i] = janr
+    }
+  },
+
+  visibleDB: function() {
+    seriesDB.private = !seriesDB[private]
+  }
+} 
 // rememberMySeries()
 // detectLevelSeries()
 // writeGenres()
 // showDb()
 
-function rememberMySeries() {
-  for (let i = 1; i <= 2; i++) {
-    const lastSerial = prompt("Oxirgi ko'rgan serialingiz?")
-    if (lastSerial === null || lastSerial === "") {
-      i--
-      continue
-    }
-    let index = 0
-    do {
-      var serialRange = +prompt("Nechchi baho berasiz?")
-      if (serialRange === 0) {
-        continue;
-      }
-      index++
-    } while (index < 1)
-    seriesDB.series[lastSerial] = serialRange
-  }
-}
-function detectLevelSeries() {
-  if (seriesDB.count < 5) {
-    console.log("Kam serial ko'ribsiz")
-  } else if (seriesDB.count < 10) {
-    console.log("Siz classik tomoshabin ekansiz")
-  } else {
-    console.log("Siz serialchi zvezda ekansiz")
-  }
-}
-function showDb () {
-  const private1 = prompt("mahfiy bo'lsinmi?", "")
-  seriesDB.private = private1
-  if (seriesDB.private === "yo'q") {
-    console.log(seriesDB)
-  }
-}
-function writeGenres () {
-  for (let i = 0; i < 3; i++) {
-    const janr = prompt(`Yaxshi ko'rgan janringiz #${i+1}`)
-    seriesDB.genres[i] = janr
-  }
-}
+// function rememberMySeries() {
+//   for (let i = 1; i <= 2; i++) {
+//     const lastSerial = prompt("Oxirgi ko'rgan serialingiz?")
+//     if (lastSerial === null || lastSerial === "") {
+//       i--
+//       continue
+//     }
+//     let index = 0
+//     do {
+//       var serialRange = +prompt("Nechchi baho berasiz?")
+//       if (serialRange === 0) {
+//         continue;
+//       }
+//       index++
+//     } while (index < 1)
+//     seriesDB.series[lastSerial] = serialRange
+//   }
+// }
+// function detectLevelSeries() {
+//   if (seriesDB.count < 5) {
+//     console.log("Kam serial ko'ribsiz")
+//   } else if (seriesDB.count < 10) {
+//     console.log("Siz classik tomoshabin ekansiz")
+//   } else {
+//     console.log("Siz serialchi zvezda ekansiz")
+//   }
+// }
+// function showDb () {
+//   const private1 = prompt("mahfiy bo'lsinmi?", "")
+//   seriesDB.private = private1
+//   if (seriesDB.private === "yo'q") {
+//     console.log(seriesDB)
+//   }
+// }
+// function writeGenres () {
+//   for (let i = 0; i < 3; i++) {
+//     const janr = prompt(`Yaxshi ko'rgan janringiz #${i+1}`)
+//     seriesDB.genres[i] = janr
+//   }
+// }
 // seriesDB.series = {
 //   [lastSerial]: serialRange,
 //   [lastSerial2]: serialRange2,
