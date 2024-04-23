@@ -1,6 +1,6 @@
 "use strict";
 
-// alert("Hello JavaScript")
+alert("Hello JavaScript")
 
 // const place = confirm("Are you here?")
 // console.log(place)
@@ -104,7 +104,11 @@ const seriesDB = {
   },
 
   visibleDB: function() {
-    seriesDB.private = !seriesDB[private]
+    if(seriesDB.private) {
+      seriesDB.private = false
+    } else {
+      seriesDB.private = true
+    }
   }
 } 
 // rememberMySeries()
