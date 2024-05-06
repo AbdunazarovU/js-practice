@@ -1,6 +1,6 @@
 "use strict";
 
-alert("Hello JavaScript")
+// alert("Hello JavaScript")
 
 // const place = confirm("Are you here?")
 // console.log(place)
@@ -93,14 +93,28 @@ const seriesDB = {
   },
 
   writeGenres: function () {
-    for (let i = 0; i < 3; i++) {
-      const janr = prompt(`Yaxshi ko'rgan janringiz #${i+1}`)
-      if (janr == '' || janr == null || isNaN(janr)) {
-        i--;
-        continue;
-      }
-      seriesDB.genres[i] = janr
+    // for (let i = 0; i < 3; i++) {
+    //   const janr = prompt(`Yaxshi ko'rgan janringiz #${i+1}`)
+    //   if (janr == '' || janr == null || isNaN(janr)) {
+    //     console.log("Siz noto'gri ma'lumot kiritdingiz")
+    //     i--;
+    //   } else {
+    //     seriesDB.genres[i] = janr
+    //   }
+    // }
+
+    let genres = prompt("Yaxshi ko'rgan janrlaringizni vergul yordamida yozing")
+    console.log(genres)
+    if (genres == '' || genres == null) {
+      console.log("Siz noto'gri ma'lumot kiritdingiz")
+    } else {
+      seriesDB.genres = genres.split(", ")
     }
+
+
+    seriesDB.genres.forEach((item, idx) => {
+      console.log(`Yaxshi ko'rgan janringiz ${idx + 1} - nomi ${item}`)
+    })
   },
 
   visibleDB: function() {
